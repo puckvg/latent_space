@@ -80,7 +80,7 @@ def read_rmsd(file):
         return None
     return rmsd 
 
-def check_rmsd(rmsd, threshold=0.5):
+def check_rmsd(rmsd, threshold=0.25):
     if rmsd > threshold:
         return False
     else:
@@ -115,7 +115,7 @@ def compare_dictionaries(dict1, dict2, key, threshold=1):
 if __name__=="__main__":
     QM9_dir = "/home/puckvg/Data/C7H10O2/"
     B3LYP_dir = "/home/puckvg/Work/2020-latent_space/log/"
-    B3LYP_xyz_dir = "/home/puckvg/Work/2020-latent_space/xyz_reformatted/"
+    B3LYP_xyz_dir = "/home/puckvg/Work/2020-latent_space/xyz/"
     rmsd_dir = "/home/puckvg/Work/2020-latent_space/rmsd/"
 
     properties_qm9 = {}
@@ -130,14 +130,14 @@ if __name__=="__main__":
         properties_qm9[qm9_name] = list(original_properties.values())
 
         # read RMSD
-        rmsd_file = rmsd_dir+qm9_name+".xyz_rmsd.txt"
+        rmsd_file = rmsd_dir+qm9_name+"_rmsd.txt"
         rmsd = read_rmsd(rmsd_file)
         rmsd_dict[qm9_name]=rmsd
 
     for file in glob(B3LYP_dir+"*.log"):
 
         name = get_molecule_name(file)
-        xyz_file = B3LYP_xyz_dir+name+"_reformat.xyz"
+        xyz_file = B3LYP_xyz_dir+name+".xyz"
         # want xyz file for smiles matching (which doesn't work right now anyway)
         b3lyp_properties = get_b3lyp_properties(file,xyz_file) 
         properties_b3lyp[name] = list(b3lyp_properties.values())

@@ -13,7 +13,6 @@ def read_file(f):
     data   = parser.parse()
 
     coords   = data.atomcoords
-    print(coords)
     atomnums = data.atomnos
     numAtoms = len(atomnums)
 
@@ -23,7 +22,6 @@ def read_file(f):
 def write_xyz(numAtoms, labels, coords, fout):
     print(coords)
     coords = coords[-1]
-    print(coords)
     f = open(fout, 'w')
     f.write(str(numAtoms))
     f.write('\n\n')
@@ -45,14 +43,14 @@ def write_xyz_all(numAtoms, labels, coords_all, fout):
 
 if __name__ == "__main__":
 
-    filename = sys.argv[1]
-    fout = filename[:-4] + ".xyz"
-    numAtoms, labels, coords_all = read_file(filename)
-    write_xyz(numAtoms, labels, coords_all, fout)
-#     in_dir = "/home/puckvg/Work/2020-latent_space/log/"
-#     out_dir = "/home/puckvg/Work/2020-latent_space/xyz/"
-#     for file in sorted(glob.glob(in_dir+"*.log")):
-#         name = check_properties.get_molecule_name(file)
-#         out_file = out_dir+name+".xyz"
-#         numAtoms, labels, coords_all = read_file(file)
-#         write_xyz(numAtoms, labels, coords_all, out_file)
+#    filename = sys.argv[1]
+ #   fout = filename[:-4] + ".xyz"
+  #  numAtoms, labels, coords_all = read_file(filename)
+   # write_xyz(numAtoms, labels, coords_all, fout)
+     in_dir = "/home/puckvg/Work/2020-latent_space/log/"
+     out_dir = "/home/puckvg/Work/2020-latent_space/xyz/"
+     for file in sorted(glob.glob(in_dir+"*.log")):
+         name = check_properties.get_molecule_name(file)
+         out_file = out_dir+name+".xyz"
+         numAtoms, labels, coords_all = read_file(file)
+         write_xyz(numAtoms, labels, coords_all, out_file)
