@@ -1,6 +1,4 @@
-
-# Add parent
-
+#!/usr/bin/env python3
 import select
 import sys
 import os
@@ -264,7 +262,7 @@ def read_properties_b3lyp(filename, values={}):
         end_idx = get_rev_index(lines, "Diagonal vibrational polarizability")
 
     idxs = list(range(start_idx+1, end_idx))
-    imaginary_frequency_count = 0
+    imaginary_frequencies = []
 
     for idx in idxs: 
         line = lines[idx]
@@ -272,8 +270,10 @@ def read_properties_b3lyp(filename, values={}):
         frequencies = line[3:]
         for frequency in frequencies: 
             if float(frequency) < 0:
-                imaginary_frequency_count += 1
+                imaginary_frequencies.append(float(frequency))
 
+    imaginary_frequency_count = len(imaginary_frequencies)
+    properties["imaginary_frequencies"]=imaginary_frequencies
     properties["imaginary_frequency_count"]=imaginary_frequency_count
 
     return properties

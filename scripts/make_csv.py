@@ -17,7 +17,7 @@ def get_properties(in_file):
 
 if __name__=="__main__":
 
-    directory = "/home/puckvg/Work/2020-latent_space/log/"
+    directory = "../log/"
     dicts = []
     names = ['ID']
 
@@ -26,7 +26,6 @@ if __name__=="__main__":
         name, properties = get_properties(in_file)
         names.append(name)
         dicts.append(properties)
-
 
     with open("qm9_properties.csv", "w") as out_file:
         writer = csv.writer(out_file, delimiter="\t")
