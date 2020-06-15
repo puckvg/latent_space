@@ -269,7 +269,7 @@ def read_properties_b3lyp(filename, values={}):
         line = line.split()
         frequencies = line[3:]
         for frequency in frequencies: 
-            if float(frequency) < 0:
+            if float(frequency) < -0.5:
                 imaginary_frequencies.append(float(frequency))
 
     imaginary_frequency_count = len(imaginary_frequencies)
