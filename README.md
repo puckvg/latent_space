@@ -1,3 +1,6 @@
 # Latent Space
 
-How to distinguish stable vs unstable molecules ???
+Molecule is stable if Corina SMILES == B3LYP SMILES
+
+TODO:
+conversion from Inchi to SMILES .. 
