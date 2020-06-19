@@ -45,4 +45,4 @@ if __name__ == "__main__":
     llists = llists_stable + llists_unstable
 
     df = pd.DataFrame(llists, columns=["QM9 index", "SMILES", "stable"])
-    df.to_csv("../stability.csv")
+    df.to_csv("../stability.csv", index=False)
