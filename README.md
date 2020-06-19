@@ -1,6 +1,7 @@
 # Latent Space
 
-Molecule is stable if Corina SMILES == B3LYP SMILES
+STABLE:
+SMILES of B3LYP relaxed geometries (approx 13k)
 
-TODO:
-conversion from Inchi to SMILES .. 
+UNSTABLE: 
+SMILES of Corina that relaxed to different geometries (approx 3k)
